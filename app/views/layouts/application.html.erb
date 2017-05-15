@@ -3,12 +3,35 @@
   <head>
     <title>CuponApp</title>
     <%= csrf_meta_tags %>
-
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_link_tag    'application', media: 'all' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <script type="text/javascript">
+      $(document).ready(function(){
+        flatpickr('#flatpickr-input');
+      });
+    </script>
   </head>
 
   <body>
-    <%= yield %>
+    <nav class="nav has-shadow">
+      <div class="nav-left">
+        <%= link_to root_path, class: "nav-itemr" do %>
+          <p>CUPON</p>
+        <% end %>
+        <div class="nav-item">
+          <%= form_tag("/", method: "get", class: "field has-addons") do %>
+            <p class="control">
+              <%= text_field_tag(:division, "", class: "input") %>
+            </p>
+            <p class="control">
+              <%= submit_tag("Search", class: "button is-primary") %>
+            </p>
+          <% end %>
+        </div>
+      </div>
+    </nav>
+    <div class="container">
+      <%= yield %>
+    </div>
   </body>
 </html>

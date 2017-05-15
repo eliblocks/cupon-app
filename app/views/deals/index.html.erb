@@ -1,0 +1,20 @@
+<div class="columns is-multiline">
+  <% @deals.each do |deal| %>
+    <div class="column is-4">
+      <div class="card">
+        <%= link_to new_rsvp_path(deal_url: deal.url, merchant: deal.merchant, address: deal.address) do %>
+          <div class="card-image">
+            <%= image_tag deal.image_url %>
+          </div>
+        <% end %>
+        <%= link_to deal.url do %>
+          <div class="card-content">
+            <p class="title is-6"><%= deal.display_title %></p>
+            <span><%= deal.merchant %></span>
+            <span class="is-pulled-right"><%= number_to_currency(deal.price/100, precision: 0) %></span>
+          </div>
+        <% end %>
+        </div>
+    </div>
+  <% end %>
+</div>
