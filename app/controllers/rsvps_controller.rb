@@ -11,6 +11,7 @@ class RsvpsController < ApplicationController
   def create
     @rsvp = Rsvp.new(rsvp_params)
     @rsvp.phone = "+1#{params[:rsvp][:phone]}"
+    @rsvp.url = params[:url]
     if @rsvp.save
       request_confirmation(params[:rsvp][:phone], params[:rsvp][:merchant], params[:rsvp][:address], params[:rsvp][:name])
       flash[:success] = "RSVP sent! You will receive a confirmation text"
