@@ -31,6 +31,9 @@
       </div>
     </nav>
     <div class="container">
+      <% flash.each do |message_type, message| %>
+        <div class="notification is-primary %>"><%= message %></div>
+      <% end %>
       <%= yield %>
     </div>
   </body>

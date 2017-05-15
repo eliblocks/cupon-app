@@ -1,8 +1,8 @@
 <div class="columns">
   <div class="column is-6">
     <%= form_for @rsvp, url: {action: "create"}, html: {class: "rsvp_form", id: "rsvp-form"} do |f| %>
-      <%= label_tag :restaurant, "Restaurant", class: "label" %>
-      <%= text_field_tag :restaurant, @merchant, class: "input" %>
+      <%= label_tag :merchant, "Restaurant", class: "label" %>
+      <%= text_field_tag :merchant, @merchant, class: "input" %>
       <%= label_tag :address, "Address", class: "label" %>
       <%= text_field_tag :address, @address, class: "input" %>
       <%= f.label :date, class: "label" %>
