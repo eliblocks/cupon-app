@@ -10,15 +10,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170513232142) do
+ActiveRecord::Schema.define(version: 20170515172016) do
 
   create_table "rsvps", force: :cascade do |t|
     t.string   "url"
     t.date     "date"
     t.string   "name"
     t.string   "phone"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+    t.string   "merchant"
+    t.string   "address"
+    t.integer  "matched_rsvp"
   end
 
 end

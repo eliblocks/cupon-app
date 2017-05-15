@@ -1,10 +1,10 @@
 <div class="columns">
   <div class="column is-6">
     <%= form_for @rsvp, url: {action: "create"}, html: {class: "rsvp_form", id: "rsvp-form"} do |f| %>
-      <%= label_tag :merchant, "Restaurant", class: "label" %>
-      <%= text_field_tag :merchant, @merchant, class: "input" %>
-      <%= label_tag :address, "Address", class: "label" %>
-      <%= text_field_tag :address, @address, class: "input" %>
+      <%= f.label :merchant, "Restaurant", class: "label" %>
+      <%= f.text_field :merchant, class: "input", value: @merchant %>
+      <%= f.label :address, "Address", class: "label" %>
+      <%= f.text_field :address, class: "input", value: @address %>
       <%= f.label :date, class: "label" %>
       <%= f.text_field :date, class: "input", id: "flatpickr-input" %>
       <%= f.label :name, "Name", class: "label" %>

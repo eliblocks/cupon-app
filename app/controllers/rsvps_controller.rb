@@ -10,8 +10,9 @@ class RsvpsController < ApplicationController
 
   def create
     @rsvp = Rsvp.new(rsvp_params)
+    @rsvp.phone = "+1#{params[:rsvp][:phone]}"
     if @rsvp.save
-      request_confirmation(params[:rsvp][:phone], params[:merchant], params[:address])
+      request_confirmation(params[:rsvp][:phone], params[:rsvp][:merchant], params[:rsvp][:address], params[:rsvp][:name])
       flash[:success] = "RSVP sent! You will receive a confirmation text"
       redirect_to root_url
     else
@@ -25,10 +26,10 @@ class RsvpsController < ApplicationController
     params.require(:rsvp).permit(:name, :phone, :date, :url, :merchant, :address)
   end
 
-  def request_confirmation(phone, merchant, address)
+  def request_confirmation(phone, merchant, address, name)
     from = '+18159184589'
     to = phone
-    body = "Please confirm your cupon RSVP for #{ merchant } at #{ address }"
+    body = "Hello #{name}, please reply '1' to confirm your cupon RSVP for #{ merchant } at #{ address }"
 
     client = Twilio::REST::Client.new(
       ENV["TWILIO_ACCOUNT_SID"],
